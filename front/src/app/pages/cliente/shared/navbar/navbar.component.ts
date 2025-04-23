@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CarritoStateService } from '../../../../services/carrito-state.service';
 import { CarritoService } from '../../../../services/carrito.service';
 import { AuthService } from '../../../../services/auth.service';
 
@@ -15,7 +14,10 @@ import { AuthService } from '../../../../services/auth.service';
 export class NavbarComponent implements OnInit {
   totalCarrito: number = 0;
 
-  constructor(private carritoService: CarritoService, public auth: AuthService) {}
+  constructor(
+    private carritoService: CarritoService,
+    public auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.carritoService.totalItems$.subscribe((total) => {

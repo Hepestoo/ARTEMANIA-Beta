@@ -16,75 +16,71 @@
 
 <!-- Carrusel cursos -->
 <section class="cursos">
-    <div class="header">
-      <h3>Cursos y talleres disponibles</h3>
-      <a routerLink="/catalogo">Ver más</a>
-    </div>
-  
-    <div class="carousel-wrapper" #carousel>
-      <div class="carousel-cursos">
-        <div class="curso" *ngFor="let curso of cursos">
-          <img [src]="'http://localhost:3000/uploads/productos/' + curso.imagen_url" alt="{{ curso.nombre }}">
-          <h4>{{ curso.nombre }}</h4>
-          <h4>{{ curso.descripcion }}</h4>
-          <button>Inscribirse →</button>
-        </div>
+  <div class="header">
+    <h3>Cursos y talleres disponibles</h3>
+    <a routerLink="/catalogo">Ver más →</a>
+  </div>
+
+  <div class="carousel-wrapper" #carousel>
+    <div class="carousel-cursos">
+      <div class="curso" *ngFor="let curso of cursos">
+        <img [src]="'http://localhost:3000/uploads/productos/' + curso.imagen_url" alt="{{ curso.nombre }}">
+        <h4>{{ curso.nombre }}</h4>
+        <p>{{ curso.descripcion }}</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
   
   
 
 <!-- Categorías -->
-<section class="categorias-home">
-    <button>Cursos</button>
-    <button>Talleres</button>
-    <button>Velas</button>
-    <button>Resina</button>
-    <button>Cartonaje</button>
-    <button>Scrapbooking</button>
-    <button>Herramientas</button>
-    <button>Promociones</button>
-  </section>
-  
-  
-
-<!-- Productos más vendidos -->
-<section class="productos-vendidos">
-  <div class="header">
-    <h3>Productos más vendidos</h3>
-    <a href="/catalogo">Ver mas</a>
+<section class="categorias-home" *ngIf="subcategorias && subcategorias.length">
+  <div class="categorias-titulo">
+    <h3>Explora nuestras categorías</h3>
+    <p>Selecciona una categoría para descubrir productos únicos</p>
   </div>
-
-  <div class="grid-productos">
-    <div class="producto">
-      <img src="https://images.pexels.com/photos/5554699/pexels-photo-5554699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-      <p>Pigmentos líquidos para velas</p>
-      <span>$2.00</span>
-      <small>Materias primas</small>
-    </div>
-    <div class="producto">
-        <img src="https://images.pexels.com/photos/5554699/pexels-photo-5554699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-        <p>Pigmentos líquidos para velas</p>
-        <span>$2.00</span>
-        <small>Materias primas</small>
-      </div>
-      <div class="producto">
-        <img src="https://images.pexels.com/photos/5554699/pexels-photo-5554699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-        <p>Pigmentos líquidos para velas</p>
-        <span>$2.00</span>
-        <small>Materias primas</small>
-      </div>
-      <div class="producto">
-        <img src="https://images.pexels.com/photos/5554699/pexels-photo-5554699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-        <p>Pigmentos líquidos para velas</p>
-        <span>$2.00</span>
-        <small>Materias primas</small>
-      </div>
+  
+  <div class="categorias-botones">
+    <button 
+      *ngFor="let sub of subcategorias" 
+      [routerLink]="['/catalogo']" 
+      [queryParams]="{ sub: sub.id }">
+      {{ sub.nombre }}
+    </button>
   </div>
 </section>
 
+
+  
+  
+
+<!-- Sección de Testimonios -->
+<section class="testimonios">
+  <h2>Clientes felices</h2>
+  <div class="testimonios-container">
+    <div class="testimonio">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="María A.">
+      <p class="comentario">“Tomé el taller de velas y fue increíble. ¡Gracias Artemania!”</p>
+      <p class="cliente">– María A.</p>
+    </div>
+    <div class="testimonio">
+      <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos M.">
+      <p class="comentario">“Compré moldes y pigmentos. Todo llegó perfecto y muy rápido.”</p>
+      <p class="cliente">– Carlos M.</p>
+    </div>
+    <div class="testimonio">
+      <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Luisa G.">
+      <p class="comentario">“Volveré a inscribirme en otro taller, ¡la experiencia fue maravillosa!”</p>
+      <p class="cliente">– Luisa G.</p>
+    </div>
+  </div>
+</section>
+
+
 <!-- Sugerencias -->
+<!-- Sugerencias con mailto -->
 <section class="sugerencias">
   <div class="sugerencias-content">
     <!-- Texto izquierdo -->
@@ -93,13 +89,22 @@
       <p>Cuéntanos tu experiencia y en qué podríamos mejorar</p>
     </div>
 
+    <!-- Línea divisoria -->
+    <div class="linea-divisoria"></div>
+
     <!-- Formulario derecho -->
-    <div class="sugerencias-form">
-      <textarea placeholder="Déjanos tu sugerencia..."></textarea>
-      <button>Enviar</button>
-    </div>
+    <form 
+      class="sugerencias-form" 
+      action="mailto:adl.rivera@yavirac.edu.ec" 
+      method="POST" 
+      enctype="text/plain"
+    >
+      <textarea name="sugerencia" placeholder="Déjanos tu sugerencia..."></textarea>
+      <button type="submit">Enviar</button>
+    </form>
   </div>
 </section>
+
 
 
 <!-- Beneficios -->
