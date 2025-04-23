@@ -7,41 +7,79 @@
 
 .imagen-banner {
   flex: 1;
+  position: relative;
+  overflow: hidden;
 }
 
 .imagen-banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.aviso-contacto {
+  background-color: #f9fcf8;
+  padding: 3rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.aviso-contacto p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #222;
+}
+
+.aviso-contacto strong {
+  font-weight: 700;
+}
+
+
+/* Overlay */
+.imagen-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* tono oscuro semitransparente */
+  z-index: 1;
 }
 
 .texto-banner {
-  flex: 1;
+  flex: 0.8;
   background-color: #1f093f;
   color: white;
-  padding: 2.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 2;
 }
 
 .texto-banner h2 {
-  font-size: 2rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
 .texto-banner .linea {
-  width: 50px;
+  width: 100px;
   height: 4px;
   background-color: #e7b6a4;
   margin-bottom: 1rem;
 }
 
 .texto-banner p {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
 }
+
 
   
   /* Info rápida */
@@ -205,14 +243,20 @@
   
   /* Redes sociales */
   .redes {
-    padding: 2rem;
+    height: 400px;
+    padding: 4rem;
     text-align: center;
   }
-  
-  .iconos i {
+  .redes h3{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
     font-size: 2rem;
-    margin: 0 1rem;
+    margin-bottom: 80px;
+  }
+  .iconos i {
+    font-size: 5rem;
+    margin: 0 2rem;
     cursor: pointer;
-    color: #333;
+    color: #000000;
   }
   
